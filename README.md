@@ -5,6 +5,25 @@ This is a simple logging library for Nodejs projects depends on:
 - [loglevel-plugin-prefix](https://github.com/kutuluk/loglevel-plugin-prefix)
 - [chalk](https://github.com/chalk/chalk#readme)
 
+## Installation
+
+For add this as `npm` dependency
+
+```bash
+npm install git+ssh://git@git.webmonks.org:node-libraries/monk-log.git
+```
+
+or add manually to your `package.json` file
+
+```json
+  {
+    "dependencies": {
+      ... ,
+      "monk-log": "git+ssh://git@git.webmonks.org:node-libraries/monk-log.git"
+    }
+  }
+```
+
 ## Setting up
 
 ```javascript
