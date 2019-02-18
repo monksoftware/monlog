@@ -1,16 +1,18 @@
 # Monk Log library
 
-This is a simple logging library for Nodejs projects depends on:
-- [loglevel](https://github.com/pimterry/loglevel)
-- [loglevel-plugin-prefix](https://github.com/kutuluk/loglevel-plugin-prefix)
-- [chalk](https://github.com/chalk/chalk#readme)
+Are you using `console.log` in your project? Are you tired of configuring
+loglevel / winston / whatever to add timestamp, colors to your log messages?
+Do you want a consistent log style?
+This is the library for you! You can now log with style -- no configuration
+required!
 
 ## Installation
 
-For add this as `npm` dependency
+Simply add this library as a dependency in your project.
+You can use the github URI:
 
-```bash
-npm install git+ssh://git@git.webmonks.org:node-libraries/monk-log.git
+```
+yarn add github:monksoftware/monk-log
 ```
 
 or add manually to your `package.json` file
@@ -18,60 +20,61 @@ or add manually to your `package.json` file
 ```json
   {
     "dependencies": {
-      ... ,
-      "monk-log": "git+ssh://git@git.webmonks.org:node-libraries/monk-log.git"
+      [...] ,
+      "monk-log": "github:monksoftware/monk-log"
     }
   }
 ```
 
-## Setting up
+## How to use
+
+Works pretty much the same as `loglevel`, the only difference is that
+the exported root logger is preconfigured with loglevel-plugin-prefix
+and custom formatting functions in order to output nice colorful log messages
+with timestamp, log level and logger name.
 
 ```javascript
-const { levels, monkLog } = require('monk-log')
-const log = monkLog(options)
+const log = require('monk-log')
 
 log.trace(msg)
 log.debug(msg)
 log.info(msg)
 log.warn(msg)
 log.error(msg)
-
-```
-
-## Documentation
-
-The monk log library accept optional parameters:
-```
-{
-  name:   // Choose a name for log instance, default is monk-log
-  level:  // Choose a log level, default il DEBUG, possible level are:
-          // "TRACE" "DEBUG" "INFO" "WARN" "ERROR"
-  wrap:   // Wrap `name` with custom identifier, default is and array of square brackets ['[', ']']
-}
 ```
 
 ## Examples
 
-see more inside `examples folder`
+See more inside `examples folder`
+
+### Ready-to-go logging
+```javascript
+const log = require('monk-log')
+log.warn('You can have nice log messages in just one line!')
+
+// Outputs
+// [2019-02-18T01:10:49.933] WARN [root]: You can have nice log messages in just one line!
+```
+
+### Child loggers with custom format
 
 ```javascript
-const { levels, monkLog } = require('monk-log')
-const log = monkLog({
-  name: 'MONK-LOG',
-  level: levels.DEBUG,
-  wrap: ['+', '+']
+const log = require('monk-log')
+// Default level is WARN,
+log.setDefaultLevel('DEBUG')
+const childLogger = log.getLogger('CHILD', 'DEBUG', {
+  template: 'When: %t, who: %n, why: %l, what: '
 })
+log.info('Child logger has been set up')
+childLogger.debug('this is a debug message')
+childLogger.info('This is a info message')
+childLogger.warn('this is a warning message')
+childLogger.error('this is an error message')
 
-log.debug('this is a debug log')
-log.info('this is an info log')
-log.warn('this is a warning log')
-log.error('this is an error log')
-
-// Response
-// [2019-02-08T18:35:40.245] INFO monk-log: Set log level to DEBUG
-// [2019-02-08T18:35:40.245] DEBUG +MONK-LOG+: this is a debug log
-// [2019-02-08T18:35:40.245] INFO +MONK-LOG+: this is an info log
-// [2019-02-08T18:35:40.245] WARN +MONK-LOG+: this is a warning log
-// [2019-02-08T18:35:40.245] ERROR +MONK-LOG+: this is an error log
-
+// Outputs
+// [2019-02-18T01:08:46.260] INFO [root]: Child logger has been set up
+// When: 2019-02-18T01:08:46.262, who: CHILD, why: DEBUG, what: this is a debug message
+// When: 2019-02-18T01:08:46.262, who: CHILD, why: INFO, what: This is a info message
+// When: 2019-02-18T01:08:46.262, who: CHILD, why: WARN, what: this is a warning message
+// When: 2019-02-18T01:08:46.263, who: CHILD, why: ERROR, what: this is an error message
 ```
