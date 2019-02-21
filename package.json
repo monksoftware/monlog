@@ -10,6 +10,9 @@
   "scripts": {
     "test": "mocha --colors"
   },
+  "files": [
+    "./lib"
+  ],
   "keywords": [
     "monk",
     "log",
