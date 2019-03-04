@@ -53,7 +53,7 @@ const log = require('monk-log')
 log.warn('You can have nice log messages in just one line!')
 
 // Outputs
-// [2019-02-18T01:10:49.933] WARN [root]: You can have nice log messages in just one line!
+// [2019-02-18T01:10:49.933+01:00] WARN [root]: You can have nice log messages in just one line!
 ```
 
 ### Child loggers with custom format
@@ -73,8 +73,8 @@ childLogger.error('this is an error message')
 
 // Outputs
 // [2019-02-18T01:08:46.260] INFO [root]: Child logger has been set up
-// When: 2019-02-18T01:08:46.262, who: CHILD, why: DEBUG, what: this is a debug message
-// When: 2019-02-18T01:08:46.262, who: CHILD, why: INFO, what: This is a info message
-// When: 2019-02-18T01:08:46.262, who: CHILD, why: WARN, what: this is a warning message
-// When: 2019-02-18T01:08:46.263, who: CHILD, why: ERROR, what: this is an error message
+// When: 2019-02-18T01:08:46.262+01:00, who: CHILD, why: DEBUG, what: this is a debug message
+// When: 2019-02-18T01:08:46.262+01:00, who: CHILD, why: INFO, what: This is a info message
+// When: 2019-02-18T01:08:46.262+01:00, who: CHILD, why: WARN, what: this is a warning message
+// When: 2019-02-18T01:08:46.263+01:00, who: CHILD, why: ERROR, what: this is an error message
 ```
