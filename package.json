@@ -11,7 +11,7 @@
     "test": "mocha --colors"
   },
   "files": [
-    "./lib"
+    "lib/"
   ],
   "keywords": [
     "monk",
