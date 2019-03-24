@@ -39,5 +39,6 @@
   "repository": {
     "type": "git",
     "url": "git@git.webmonks.org:node-libraries/monk-log.git"
-  }
+  },
+  "types": "./index.d.ts"
 }
