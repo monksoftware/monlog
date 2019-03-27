@@ -1,17 +1,19 @@
 {
   "name": "monk-log",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "private": false,
   "engines": {
     "node": ">=8.3.0"
   },
   "description": "Logging library for Monk projects",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test": "mocha --colors"
   },
   "files": [
-    "lib/"
+    "lib/",
+    "index.d.ts"
   ],
   "keywords": [
     "monk",
@@ -40,6 +42,5 @@
   "repository": {
     "type": "git",
     "url": "git@git.webmonks.org:node-libraries/monk-log.git"
-  },
-  "types": "./index.d.ts"
+  }
 }
