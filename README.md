@@ -8,8 +8,9 @@ required!
 
 ## How to use
 
-Works pretty much the same as `loglevel`, the only difference is that
-the exported root logger is preconfigured with loglevel-plugin-prefix
+Works pretty much the same as [loglevel](https://www.npmjs.com/package/loglevel),
+the only difference is that the exported root logger is preconfigured with
+[loglevel-plugin-prefix](https://github.com/kutuluk/loglevel-plugin-prefix)
 and custom formatting functions in order to output nice colorful log messages
 with timestamp, log level and logger name.
 
@@ -37,7 +38,7 @@ defaults resulting in nice, useful and production-ready log messages:
 const log = require('@monksoftware/monlog')
 const sublog = log.getLogger('SUB', log.levels.DEBUG)
 log.warn('You can have nice log messages in just one line!')
-sublog.debug("It's easy to define subloggers with different levels!')
+sublog.debug("It's easy to define subloggers with different levels!")
 
 // [2019-02-18T01:10:49.933+01:00] WARN [root]: You can have nice log messages in just one line!
 // [2019-06-04T13:07:24.298+02:00] DEBUG [SUB]: It's easy to define subloggers with different levels!
