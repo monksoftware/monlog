@@ -8,7 +8,7 @@ const expect = chai.expect
 
 describe('monk log', () => {
   it('should export an instance of MonkLogger', () => {
-    expect(log.constructor.name).to.equal('MonkLogger')
+    expect(log.constructor.name).to.equal('MonLogger')
   })
   it("should export loggers that are instances of loglevel's loggers", () => {
     expect(log).to.be.instanceOf(rawLoglevelLogger.constructor)
